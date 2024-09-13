@@ -1,5 +1,5 @@
 
-import LoginForm from "@/components/authentication-02"
+import LoginForm from "@/components/LogIn"
 
 type Props = {}
 
