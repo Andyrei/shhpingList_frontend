@@ -17,7 +17,6 @@ export default function RootLayout({
     <html lang="en" className=""  suppressHydrationWarning>
       <body className="">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-        <nav><ModeToggle /></nav>
             {children}
           </ThemeProvider>
         </body>
