@@ -1,19 +1,12 @@
 'use client'
 
 import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { useState } from "react";
-import BinIcon from '../icons/binIcon';
-import CheckIcon from "@/icons/checkIcon";
+import { ListItem } from '@/app/types/listType';
+import ListCard from "@/components/ListCard";
 
-type ListItem = {
-  id: string | number;
-  title: string;
-  checked: boolean;
-  quantity: number;
-};
+
 
 const LIST_TEST = [
   {
@@ -66,7 +59,8 @@ export default function Home() {
       prevList?.filter((l) => l.id !== id) // Use filter to exclude the item by ID
     );
   }
-  function handleCheck(id: string | number) {
+
+function handleCheck(id: string | number) {
     setList((prevList) => 
       prevList.map((l) => {
         if (l.id === id) {
@@ -75,7 +69,8 @@ export default function Home() {
         return l; // Return the item as is if the id does not match
       })
     );
-  }
+}
+
   return (
     <div className="flex justify-center items-center flex-col">
       <div className="flex w-full max-w-lg items-center space-x-2">
@@ -106,16 +101,7 @@ export default function Home() {
       {list.length > 0 ? 
       <div className="w-full mt-4 p-2 space-y-5">
         {list?.map((item) => (
-          <div key={item.id} className={`flex justify-between border ${item.checked ? "item_checked" : ''}`}>
-            <div>
-              <p>Title: {item.title}</p>
-              <div>Quantity: {item.quantity}</div>
-            </div>
-            <div className="flex flex-col">
-              <Button type="button" onClick={()=>handleCheck(item.id)}><CheckIcon /></Button>
-              <Button type="button" onClick={()=>handleDel(item.id)}><BinIcon /></Button>
-            </div>
-          </div>
+          <ListCard item={item} handleDel={handleDel} handleCheck={handleCheck}/>
         ))}
       </div> : ''}
     </div>
