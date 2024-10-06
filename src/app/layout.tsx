@@ -18,7 +18,7 @@ export default function RootLayout({
     <html lang="en" className=""  suppressHydrationWarning>
       <body className="">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <div className="flex min-h-screen w-full flex-col">
+          <div className="">
             <HeaderComponent />
             <main className="main">
               {children}
